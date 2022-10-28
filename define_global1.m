@@ -1,9 +1,6 @@
 function define_global()
 
-% define indices of model variables as global variables
-
-% written by Fan Wu and Daniel A. Beard, 01/31/07
-% Biotechnology and Bioengineering Center, Medical College of Wisconsin
+% Define indices of model variables as global variables
 
 global iH_x idPsi iATP_x iADP_x iAMP_x iGTP_x iGDP_x iPi_x iNADH_x ...
        iQH2_x iOAA_x iACCOA_x iCIT_x iICIT_x iAKG_x iSCOA_x iCOASH_x ...
@@ -15,7 +12,7 @@ global iH_x idPsi iATP_x iADP_x iAMP_x iGTP_x iGDP_x iPi_x iNADH_x ...
        iICIT_i iICIT_c iGLC_c iG6P_c iPCr_c iAMP_c;
 
 
-%% define indicis for all state variables
+%% Define indices for all state variables
 %  (i) Matrix species and dPsi
 iH_x         = 1; 
 idPsi        = 2;
