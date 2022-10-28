@@ -25,7 +25,7 @@ if(rat>0.9999)&&(rat<1.0001)
 elseif Varstruc.PDH_UR == 1
  aa = 1;
 else
-  aa=Varstruc.PDH_DR*(3*rat-1-sqrt(9*(rat^2)-14*rat+9))/(4*rat-4); %As pyruvate inc. aa inc.
+  aa=Varstruc.PDH_DR*(3*rat-1-sqrt(9*(rat^2)-14*rat+9))/(4*rat-4); 
 end
 
 save('aa','aa')
@@ -35,7 +35,7 @@ b=COAS_matrix;
 c=NAD_matrix;
 p=CO2tot_matrix;
 q=acetylcoA_matrix;
-r=NADH_matrix ;                                                                           %(NADH_matrix-Kn_NADH-Xcp0_NADH+sqrt((NADH_matrix-Kn_NADH-Xcp0_NADH).^2+4*Kn_NADH.*NADH_matrix))/2;
+r=NADH_matrix ;                                                                         
 KmA=38.3e-6;
 KmB=9.9e-6;
 KmC=60.7e-6;
