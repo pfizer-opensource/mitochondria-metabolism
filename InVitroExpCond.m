@@ -1,11 +1,5 @@
 function InVitroExpCond(fig_flag,StateType,ExpType)
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, May 2007
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
 %% Defining global variables% close all;
 clear global;
 
@@ -65,8 +59,6 @@ xo(iADP_c) = 0.2e-3; % 0.2 mM ADP
 xo(iPi_c)  = 20e-3;%  M
 
 
-
-
 %% Figure 2
 if fig_flag ==2
 %Initialize SS conditions save new initial conditions State 2
@@ -111,7 +103,6 @@ xo = x(end,:);
     end
  
 %% Plotting ready-to-publish curves
-
 
       xo(iH_c)   = 10^(-7.2); %org. 7.1xo(iMg_c)  = 5e-3; %M
       xo(iK_c)   = 0.150; %150e-3; M
