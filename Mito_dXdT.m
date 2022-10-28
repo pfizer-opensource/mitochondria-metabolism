@@ -2,12 +2,6 @@ function [f] = Mito_dXdT(t,x,param,boxVmax,delta_sf)
 % This function is used to calculate time derivatives of state
 % variables of the cell-level cardaic energetics.
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, 2008
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
 % iflag: 0 - normal; 1 - no oxygen consumption; 
 %       8 - fixed PI_c; 9 - fixed ADP_c;
 %       10 - no CK activity; 11 -
@@ -325,13 +319,13 @@ N_reactant = 37;
 
 %%  Listing fixed model parameters
 %  (i) Thermochemical constants
-RT = 8.314*(37+273.15)/1e3;          % kJ  mol^{-1}
+RT = 8.314*(37+273.15)/1e3;     % kJ  mol^{-1}
 F = 0.096484;                   % kJ mol^{-1} mV^{-1}
 
 %  (ii) Subcelular volumes and water spaces
-Vmito   = 0.001;                 % (ml mito / ml cuvette) %DAB 2/11/202
-Vbuffer = 1-Vmito;               % (ml buffer / ml cuvette) %DAB 2/11/2020
-Rm_buffer = Vmito / Vbuffer;     % Volume ratio mito volume / buffer volume
+Vmito   = 0.001;                % (ml mito / ml cuvette) %DAB 2/11/202
+Vbuffer = 1-Vmito;              % (ml buffer / ml cuvette) %DAB 2/11/2020
+Rm_buffer = Vmito / Vbuffer;    % Volume ratio mito volume / buffer volume
 
 W_c = 0.807*1.044;              % cytosol water space (ml water per ml cytosol) [VB2002]
 W_m = 0.664*1.09;               % mitochondrial water space (ml water per ml mito) [VB2002]
@@ -633,8 +627,6 @@ ai1=1+ACCOA_x/KiACCOA;
 ai2=1+r/KiNADH;
 
 J_pdh=Vmf*(a*b*c-p*q*r/Keq_pdh)/(KmC*ai2*a*b+KmB*ai1*a*c+KmA*b*c+a*b*c);
-
-%[J_pdh]=PDHphosdephos(ACCOA_x,ATP_x,ADP_x,NADH_x,CoAMAT,NAD_x,PYR_x,CO2tot,Vmf,Keq_pdh,ai1,ai2,ref_PYR,Varstruc);
 
 %% -------------------------------
 % 2. Citrate synthetase
