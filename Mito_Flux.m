@@ -2,12 +2,6 @@ function [Flux, Fluxbox] = Mito_Flux(x,param,boxVmax,delta_sf)
 % This function is used to calculate reaction fluxes based on the computer
 % model of the cell-level cardaic energetics.
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, 2008
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
 A=load('s_F');    
 s_f=A.s_F;
     
@@ -309,7 +303,7 @@ N_reactant = 37;
 %%  Listing fixed model parameters
 %  (i) Thermochemical constants
 RT = 8.314*(37+273.15)/1e3;          % kJ  mol^{-1}
-F = 0.096484;                   	 % kJ mol^{-1} mV^{-1}
+F = 0.096484;                        % kJ mol^{-1} mV^{-1}
 
 %  (ii) Subcelular volumes and water spaces
 % Vmito = 0.2882;                 % (ml mito / ml cell)
@@ -1687,13 +1681,6 @@ end
 	global_par_KmmtpAcetylCoAMAT=30.0/SF;
 	global_par_Keqmtp=0.71;
     
-    
-% assignmentRule: variable = CoAMAT
-	%CoAMAT=const_species_CoAMATt-(C16CoA_m+C16EnoylCoA_m+C16OHCoA_m+C16KetoCoA_m+C14CoA_m+C14EnoylCoA_m+C14OHCoA_m+C14KetoCoA_m+C12CoA_m+C12EnoylCoA_m+C12OHCoA_m+C12KetoCoA_m+C10CoA_m+C10EnoylCoA_m+C10OHCoA_m+C10KetoCoA_m+C8CoA_m+C8EnoylCoA_m+C8OHCoA_m+C8KetoCoA_m+C6CoA_m+C6EnoylCoA_m+C6OHCoA_m+C6KetoCoA_m+C4CoA_m+C4EnoylCoA_m+C4OHCoA_m+C4KetoCoA_m+AcetylCoAMAT);
-% assignmentRule: variable = C16AcylCoACYT
-	%C16AcylCoACYT=(26.8/SF);%*2.71828182845905.^((-0.18/SF3).*t);
-    
-%% Reactions
 %% Reactions
 	reaction_vcpt1C16_Keqcpt1=0.45;
     reaction_vcpt1C16_Kicpt1MalCoACYT=9.1/SF;
@@ -1855,7 +1842,7 @@ end
 	f(iC16KetoCoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vmschadC16) + (-1.0 * reaction_vmckatC16));
 	f(iC14Carn_cy)= (1/(compartment_VCYT))*((-1.0 * reaction_vcactC14));
 	f(iC14Carn_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vcactC14) + (-1.0 * reaction_vcpt2C14));
-    f(iC14CoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vcpt2C14) + (-1.0 * reaction_vvlcadC14) + (-1.0 * reaction_vlcadC14) + ( 1.0 * reaction_vmckatC16) + ( 1.0 * reaction_vmtpC16));
+        f(iC14CoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vcpt2C14) + (-1.0 * reaction_vvlcadC14) + (-1.0 * reaction_vlcadC14) + ( 1.0 * reaction_vmckatC16) + ( 1.0 * reaction_vmtpC16));
 	f(iC14EnoylCoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vvlcadC14) + ( 1.0 * reaction_vlcadC14) + (-1.0 * reaction_vcrotC14) + (-1.0 * reaction_vmtpC14));
 	f(iC14OHCoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vcrotC14) + (-1.0 * reaction_vmschadC14));
 	f(iC14KetoCoA_m) = (1/(compartment_VMAT))*(( 1.0 * reaction_vmschadC14) + (-1.0 * reaction_vmckatC14));
@@ -1911,9 +1898,7 @@ J_boxnadh=(1/(compartment_VMAT))*(( 1.0 * reaction_vmschadC16)+ ( 1.0 * reaction
 %     -(( 1.0 * reaction_vcpt2C4) + (-1.0 * reaction_vmcadC4) + (-1.0 * reaction_vscadC4) + ( 1.0 * reaction_vmckatC6))-(( 1.0 * reaction_vmcadC4) + ( 1.0 * reaction_vscadC4) + (-1.0 * reaction_vcrotC4))...
 %     -(( 1.0 * reaction_vcrotC4) + (-1.0 * reaction_vmschadC4))-(( 1.0 * reaction_vmschadC4) + (-1.0 * reaction_vmckatC4)));
 
-J_boxcoash= 0 ; %(-J_boxaccoa);%+((1/(compartment_VMAT))*J_CoAMAT))/W_x; % (C16CoA_m+C16EnoylCoA_m+C16OHCoA_m+C16KetoCoA_m+C14CoA_m+C14EnoylCoA_m+C14OHCoA_m+C14KetoCoA_m+C12CoA_m+C12EnoylCoA_m+C12OHCoA_m+C12KetoCoA_m+C10CoA_m+C10EnoylCoA_m+C10OHCoA_m+C10KetoCoA_m+C8CoA_m+C8EnoylCoA_m+C8OHCoA_m+C8KetoCoA_m+C6CoA_m+C6EnoylCoA_m+C6OHCoA_m+C6KetoCoA_m+C4CoA_m+C4EnoylCoA_m+C4OHCoA_m+C4KetoCoA_m+AcetylCoAMAT);
-
-
+J_boxcoash= 0 ; 
 
 %%  Defining indices for all fluxes
 	i_J_C1 = 4;
@@ -2013,11 +1998,7 @@ J_boxcoash= 0 ; %(-J_boxaccoa);%+((1/(compartment_VMAT))*J_CoAMAT))/W_x; % (C16C
     Flux(i_J_boxnadh) =J_boxnadh;
     Flux(i_J_boxaccoa)= J_boxaccoa;
     Flux(i_J_reaction_vmschadC16) = reaction_vmschadC16; 
-    Flux(i_J_CoAMAT)= 0;  %J_CoAMAT;
-%     Flux(i_J_boxcoash)= ((1/compartment_VMAT)*(reaction_vcpt1C16-reaction_vmtpC8-reaction_vmtpC10-reaction_vmtpC12-reaction_vmtpC14-reaction_vmtpC16-reaction_vcpt2C4...
-%      -reaction_vcpt2C6-reaction_vcpt2C8-reaction_vcpt2C10-reaction_vcpt2C12-reaction_vcpt2C14-reaction_vcpt2C16 -reaction_vmckatC4-reaction_vmckatC6-reaction_vmckatC8-reaction_vmckatC10...
-%      -reaction_vmckatC12-reaction_vmckatC14-reaction_vmckatC16))/W_x; %- reaction_CoASHsink
-
+    Flux(i_J_CoAMAT)= 0; 
     
     Fluxbox(1)=reaction_vcpt1C16 ;
     Fluxbox(2) = reaction_vcactC4; 
@@ -2034,7 +2015,7 @@ J_boxcoash= 0 ; %(-J_boxaccoa);%+((1/(compartment_VMAT))*J_CoAMAT))/W_x; % (C16C
          Fluxbox(12) = reaction_vmckatC10; 
          Fluxbox(13) = reaction_vmckatC8;
          Fluxbox(14) = reaction_vmckatC6;
-         Fluxbox(15) = 2*reaction_vmckatC4;  %**********
+         Fluxbox(15) = 2*reaction_vmckatC4;  
          Fluxbox(16) = reaction_vmtpC14; %   
          Fluxbox(17) = reaction_vmtpC12; %  
          Fluxbox(18) = reaction_vmtpC10; %   
