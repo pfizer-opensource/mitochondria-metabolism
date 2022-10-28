@@ -7,13 +7,6 @@ function [f] = IsoMito_dXdT(t,x,param,ExpType,StateType,J_AtC)
 % mitochondrial TCA cycle, oxidative phosphorylation, metabolite transport, and
 % electrophysiology" and its Appendices
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, May 2007
-% (Revised on June 2008 by Fan Wu)
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
 % Update from Version: 1.4 (previous update on 10/27/08)
 
 %% Defining global variables
