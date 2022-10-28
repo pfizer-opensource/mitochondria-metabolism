@@ -122,7 +122,7 @@ Z2=Z./Z(1).*100;  % Convert to % of healthy MVO2
 
 figure;
 colormap(bone)
-h=bar(Z2,'grouped','FaceColor','flat'); %ym=bar(z,'grouped','FaceColor',"flat");
+h=bar(Z2,'grouped','FaceColor','flat');
 hold on;
 % Specify face color  
 M=bone(8);

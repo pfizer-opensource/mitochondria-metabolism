@@ -1,6 +1,6 @@
 % This setup program is used to load experimental data, certain model 
 % parameters, and initial conditions for simulation.
-% Fan Wu, MCW, 11/12/08
+
 
 %clear;
 format short e;
@@ -362,8 +362,8 @@ xo_con = [ 2.5000e+001
 
 
 %% Model Parameters
-load param14.mat; % load model parameters of the previously-developed mitochondrial model (Wu et al., J Biol Chem 282 (34), 24525 (2007)
-param(39) = 50; % decrease leaking activity of proton for in vivo mito
-param(35) = 6.762e-3; % reset ANT activity for an updated ANT kinetic module 
-parma(42) = 1e-3; % ref_PYR
-param(43) = 4e-4; %Carnitine in the Cytosol (400 uM)
+load param14.mat;     % Load model parameters of the previously-developed mitochondrial model (Wu et al., J Biol Chem 282 (34), 24525 (2007)
+param(39) = 50;       % Decrease leaking activity of proton for in vivo mito
+param(35) = 6.762e-3; % Reset ANT activity for an updated ANT kinetic module 
+parma(42) = 1e-3;     % Ref_PYR
+param(43) = 4e-4;     % Carnitine in the Cytosol (400 uM)

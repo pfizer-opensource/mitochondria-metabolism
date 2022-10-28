@@ -1,5 +1,5 @@
 load('Variability_Run')
-%SA_isolated_mito_experiment % Raw code to produce variability run
+%SA_isolated_mito_experiment 
 
 %% Plot without L-Carnitine
 JO2_nocarn=mean(sim_JO2_nocarn,1);

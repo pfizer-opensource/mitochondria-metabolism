@@ -9,12 +9,6 @@ Kmcpt1C16AcylCarCYT = Varstruc.Kmcpt1CarCYT; %136.0/SF; Km of CPT1
 % This function is used to calculate time derivatives of state
 % variables of the cell-level cardaic energetics.
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, 2008
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
 % iflag:
 %       100 - constant J_AtC = x_AtC; %Default
 %       101 - constant J_AtC = x_AtC and fixed [CrP]c and [Cr]_c

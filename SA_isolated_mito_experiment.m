@@ -1,14 +1,13 @@
 % This is the main driver program for simulating steady-state cardiac
 % energetics of the control hearts under different work rates.
-% Written by Fan Wu and Daniel Beard, Medical College of Wisconsin, 2008
 
 setup1;
 param(39) = 250; % leak parameter
-param(1)=param(1)/100; % LFM Changed 2/11/2020 for pdh model substrate selection    PDH . - 2.05e-5 M/s
-param(2)= param(2)/100;% LFM Changed 2/11/2020 for pdh model substrate selction   CS . - 9.82e-4 M/s
-param(43) = 25e-6; %4e-4; %Carnitine in the Cytosol (400 uM)
-param(44)= 5.6e-5; %ki of CnAcyl carnitines in the cytosol for CACT 56 uM
-param(45)= 2.0e-4; %ki of CACT for carnitine in the cytosol
+param(1)=param(1)/100; 
+param(2)= param(2)/100;
+param(43) = 25e-6; 
+param(44)= 5.6e-5; % ki of CnAcyl carnitines in the cytosol for CACT 56 uM
+param(45)= 2.0e-4; % ki of CACT for carnitine in the cytosol
 
 
    load('sf_out')
@@ -62,7 +61,7 @@ xo(111) = 25/SF; %25 uM Carnitine in the intermembrane space
      Ind=[5; 9; 23; 35; 39; 12; 1; ];                 % Indices for parameters (VmaxAKG, VmaxMDH, Ki_NADHH_akg, ANT activity,Proton Leak Activity, Pyruvate Transporter, VmaxPDH, CPT1 transporter, KmCpt1) 
      nInd = numel(Ind);
      sf_out=sf_out';
-     sfInd=numel(sf_out); %sf_out + sf_out.*sig %param(Ind(1:nInd)) - param(Ind(1:nInd)).*sig
+     sfInd=numel(sf_out); 
      
      ub= [param(Ind(1:nInd)) + param(Ind(1:nInd)).*sig, Varstruc.boxVmax(12)+ Varstruc.boxVmax(12).*sig, Varstruc.Kmcpt1CarCYT + Varstruc.Kmcpt1CarCYT.*sig ];%        [param([Ind(1:nInd)]) + param([Ind(1:nInd)]).*sig];%, 
      lb= [param(Ind(1:nInd)) - param(Ind(1:nInd)).*sig, Varstruc.boxVmax(12)- Varstruc.boxVmax(12).*sig, Varstruc.Kmcpt1CarCYT - Varstruc.Kmcpt1CarCYT.*sig ]; %[param([Ind(1:nInd)]) - param([Ind(1:nInd)]).*sig];%, 
@@ -77,17 +76,10 @@ tic
 for k=1:1:length(X_2(:,1))
         
         param1=param;
-        param1(Ind(1:7)) =X_2(k,1:7); %norm_guess(param(m),param(m)*0.2);
+        param1(Ind(1:7)) =X_2(k,1:7);
         Varstruc.boxVmax(12)=X_2(k,8); 
         Varstruc.Kmcpt1CarCYT =X_2(k,9);  
         boxVmax=Varstruc.boxVmax;
-
-%% Set up SA
- % Parmvary= [ 0.01; 0.1; 1; 5; 10; 100;];
- 
-
-     
-
 
 %% Set up the initial conditions
 % Run the simulation to an initial state 
@@ -150,34 +142,19 @@ end
 %% Parameters varied to explore parameter space and expected variability
 % Vmax of the beta-oxidation parameters is varied by +/- 10% 
 param(43)=0;
-% for m= 1:20 
-% boxVmax1 = [7e-9; 7e-9; 6.5167e-9; 1.3333e-10; 1.6667e-10;  1.35e-9;  1.35e-9;  6.0e-8;  1.6667e-8;  6.2833e-9;  4.7333e-8; 2e-10;]; % Bakker Vmax values (M/s)
-% boxmin=boxVmax1 - (boxVmax1*0.1);
-% boxmax=boxVmax1 + (boxVmax1*0.1);
-% boxVmax=boxmin + rand(1,12)'.*(boxmax-boxmin);
 sim_JO2_nocarn=ones(length(X_2(:,1)),7);
 for kk=1:1:length(X_2(:,1))
  
         
         param1=param;
         param1(Ind(1:7)) =X_2(kk,1:7); 
-        %sf_out=(X_2(k,1:sfInd));
 
-        Varstruc.boxVmax(12)=X_2(kk,8);  %n+5%Varstruc.boxVmax(n)=norm_guess(Varstruc.boxVmax(n),Varstruc.boxVmax(n)*0.1)
-        Varstruc.Kmcpt1CarCYT =X_2(kk,9);%nn+6
+        Varstruc.boxVmax(12)=X_2(kk,8);  
+        Varstruc.Kmcpt1CarCYT =X_2(kk,9);
         boxVmax=Varstruc.boxVmax;
-
-
-%% Set up SA
- % Parmvary= [ 0.01; 0.1; 1; 5; 10; 100;];
-  %ind=[44,45];%  sf indices
- %for h= 1: numel(Parmvary);
-      %param1=param;
-  %   param1(44)=(param(44)*Parmvary(h));
 
 %% Set up the initial conditions
 % Run the simulation to an initial state 
-%xo(iCOASH_x) = 5E-3;
 xo(iACCOA_x) = 70e-6; 
 xo(iNADH_x) = 16/SF; 
 xo([42:62 iATP_c iADP_c iAMP_c iATP_i iADP_i iAMP_i]) = 0;

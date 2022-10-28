@@ -12,7 +12,7 @@ p_upper=delta_sf.*2;
 
 %% fmincon
 options = optimoptions('fmincon','Display','iter');
-options.Algorithm = 'interior-point';% 'sqp';
+options.Algorithm = 'interior-point';
 [sf_out,Fval,~,~,~,~,Hess]=fmincon(@(delta_sf)Objfun(delta_sf),delta_sf,[],[],[],[],p_lower,p_upper,[],options);
 
 % Save Results

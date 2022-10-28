@@ -37,10 +37,10 @@ xo=xo_con;
 xo(63:109)=0;
 SF=10^6; % M
 xo(105) = 0;
-xo(106) = 0.46/SF;  % FADH2 Matrix x(44)
-xo(108) =0;         %CoASH Rule x(46)
-xo(110)=25/SF;% 25/SF; % 25 uM Carnitine in cytosol
-xo(111)=25/SF; %25 uM Carnitine in the intermembrane space
+xo(106) = 0.46/SF;  % FADH2 Matrix 
+xo(108) =0;         % CoASH Rule 
+xo(110)=25/SF;      % 25 uM Carnitine in cytosol
+xo(111)=25/SF;      % 25 uM Carnitine in the intermembrane space
 
 %% Run IsoMito experiment with L-Carnitine
  
@@ -59,7 +59,8 @@ xo1(iH_c) = 10.^(-7.2);
  
 Carnind = [63,69,75,81,87,93,99];
 for i = 1:numel(Carnind)
-% Add substrates and run state-2 simulation . %14 seconds
+
+% Add substrates and run state-2 simulation 
 xo2 = x1(end,:);
 xo2(iMAL_c) = 1.0e-3;
 xo2(Carnind(i)) = 20e-6;
@@ -74,7 +75,7 @@ xo3(iADP_c) = 0.375e-3;
 % Combine simulation timecourses
 clear t
 clear x
-t = [t2(2:end); t3(2:end)]; %removed t1 for J_O2 max calculation
+t = [t2(2:end); t3(2:end)]; 
 x = [x2(2:end,:); x3(2:end,:)];
  
 clear J_O2
@@ -101,7 +102,7 @@ xo([42:62 iATP_c iADP_c iAMP_c iATP_i iADP_i iAMP_i]) = 0;
 [t0n,x0n] = ode15s(@Mito_dXdT,[0 60],xo,options,param,boxVmax,delta_sf);
 
 
-% Do state-1 experiment with experimental buffer levels % 1.6 seconds 
+% Do state-1 experiment with experimental buffer levels  
 
 xo1n = x0n(end,:);
 xo1n(iPI_c) = 5.0e-3;
@@ -111,14 +112,14 @@ xo1n(iH_c) = 10.^(-7.2);
 Carnind = [63,69,75,81,87,93,99];
 for k = 1:numel(Carnind)
     k
-% Add substrates and run state-2 simulation . %14 seconds
+% Add substrates and run state-2 simulation 
 xo2n = x1n(end,:);
 xo2n(iMAL_c) = 1.0e-3;
 xo2n(Carnind(k)) = 20e-6;
 [t2n,x2n] = ode15s(@Mito_dXdT,[0 60],xo2n,options,param,boxVmax,delta_sf);
 
 
-% Add ADP for state 3 simulation . % 5 seconds
+% Add ADP for state 3 simulation 
 
 xo3n = x2n(end,:);
 xo3n(iADP_c) = 0.375e-3;
@@ -127,7 +128,7 @@ xo3n(iADP_c) = 0.375e-3;
 % combine simulation timecourses
 clear tn
 clear xn
-tn = [t2n(2:end); t3n(2:end)]; %removed t1 for J_O2 max calculation
+tn = [t2n(2:end); t3n(2:end)]; 
 xn = [x2n(2:end,:); x3n(2:end,:)];
 
 clear Fluxn
@@ -149,11 +150,11 @@ end
 
 Fit_JO2=[J_O2_el'; J_O2_eln';];
 
-            %C16Carn; C14Carn;       C12 Carn;     C10Carn;       C8Carn; %%C6 Carn;       C4Carn; 222222     Without CArn 
+            %C16Carn; C14Carn;       C12 Carn;     C10Carn;       C8Carn; %%C6 Carn;       C4Carn;          Without CArn 
 Obs_JO2=[0.000477126; 0.000554358;  0.000547048;  0.000601049;  0.000272728;  0.000123818; 8.07258E-05; 0.000591224; 0.000659878; 0.000629419; 0.000652426;0.000294761; 0.00012433; 9.8278E-05;]; 
 
 Oss=(Fit_JO2-Obs_JO2).^2 ;
- W =Oss.*(1./(Fit_JO2).^2); %Weighting by 1/Y_pred^2
+ W =Oss.*(1./(Fit_JO2).^2); % Weighting by 1/Y_pred^2
  Oss_out=sum(W);
  
 

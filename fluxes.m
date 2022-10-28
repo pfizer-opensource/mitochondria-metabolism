@@ -2,15 +2,6 @@ function [J] = fluxes(x,param,ExpType,StateType)
 
 % Computing reaction fluxes for given model variables
 
-% Copyright: 
-% Fan Wu and Daniel. A Beard, May 2007
-% (Revised on June 2008 by Fan Wu)
-% Computational Engineering Group
-% Biotechnology and Bioengineering Center
-% Medical College of Wisconsin
-
-% Version: 1.4 (updated on 10/27/08)
-
 %% Defining global variables
 global iH_x idPsi iATP_x iADP_x iAMP_x iGTP_x iGDP_x iPi_x iNADH_x ...
        iQH2_x iOAA_x iACCOA_x iCIT_x iICIT_x iAKG_x iSCOA_x iCOASH_x ...
@@ -59,9 +50,7 @@ x_ASP_GLU = param(18);
 % param(19) not used
 % param(20) not used 
 x_SUC_MAL = param(21); 
-% param(22) not used
-% param(23) was used by Kir1 in J_akgd
-% param(24) was not used 
+
 
 % Hexokinase activity (for LaNoue state-3 experiments)
 if (ExpType == 1) && (StateType == 3)
@@ -90,7 +79,7 @@ k_Pi1 = param(40);
 k_Pi2 = param(41);
 
 % Permeability coefficients for TCA intermediates
-p_TI     = 85; % assumed to be equal to x_A for nucleotides (micro sec^-1)
+p_TI     = 85; 
 x_PYRt   = p_TI;
 x_GLUt   = p_TI;
 x_ASPt   = p_TI;
@@ -320,11 +309,6 @@ dGf1(iGLC) = -907.21;        % Glucose
 dGf1(iG6P) = -1758.87;       % Glucose-6-phosphate
 
 % K values for reference species 
-% pK_KATP is corrected to be 1.013, 08/26/08
-% pK_KADP is corrected to be 0.882, 08/26/08
-% pK_KAMP is corrected to be 0.6215, 08/26/08
-% pK_MgOAA is corrected to be 0.8629, 08/26/08
-% pK_KSUC is corrected to be 0.3525, 08/26/08
 Kh(1:N_reactant) = inf; Km(1:N_reactant) = inf; Kk(1:N_reactant) = inf;
 Kh(iATP) = 10^(-6.59); Km(iATP) = 10^(-3.82); Kk(iATP) = 10^(-1.013); 
 Kh(iADP) = 10^(-6.42); Km(iADP) = 10^(-2.79); Kk(iADP) = 10^(-0.882); 
@@ -1163,7 +1147,6 @@ Cr_c   = CRtot - PCr_c;
 ATP_c1 = ATP_c * 1/P_c(iATP); % Mg2+ unbound species
 ADP_c1 = ADP_c * 1/P_c(iADP); % Mg2+ unbound species
 J_CKe  = x_CK * (K_CK*ADP_c1*PCr_c*H_c - ATP_c1*Cr_c );
-%     J_CKe = 0;
 end
 
 

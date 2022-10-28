@@ -1,6 +1,5 @@
 % This setup program is used to load experimental data, certain model 
 % parameters, and initial conditions for simulation.
-% Fan Wu, MCW, 11/12/08
 
 %clear;
 format short e;
@@ -412,14 +411,14 @@ i_LVH_DD = 7:12;
 %% Model Parameters
 load param14.mat; % load model parameters of the previously-developed mitochondrial model (Wu et al., J Biol Chem 282 (34), 24525 (2007)
 
-param(1)= param(1)/100; % LFM changed to increase competition between Beta oxidation and PDH
-param(2)= param(2)/100; % CS . - 9.82e-4 M/s
-param(39) = 50;         % decrease leaking activity of proton for in vivo mito
-param(35) = 6.762e-3;   % reset ANT activity for an updated ANT kinetic module 
+param(1)= param(1)/100; 
+param(2)= param(2)/100;
+param(39) = 50;         % Decrease leaking activity of proton for in vivo mito
+param(35) = 6.762e-3;   % Reset ANT activity for an updated ANT kinetic module 
 param(42)= 1.944E-3;    % Reference Conc. Pyruvate ~ 1/pyr
 param(43)= 4.25e-6;     % Heart Maloyl co-A ref. Hoehn et al. Cell Metab. 2010
-param(44)= 2.97e-3;     % Beard Value % %250/10^6; Bakker           %NADtotal 
-param(45)= 1.1e-2;      % Constant_species in COASH pool %  0.0030417 M  3.0417e-3; %
+param(44)= 2.97e-3;     % 
+param(45)= 1.1e-2;      % Constant_species in COASH pool 
 
 boxVmax = [7e-9; 7e-9; 6.5167e-9; 1.3333e-10; 1.6667e-10;  1.35e-9;  1.35e-9;  6.0e-8;  1.6667e-8;  6.2833e-9;  4.7333e-8; 2e-10;]; % Bakker Vmax values (M/s)  
 

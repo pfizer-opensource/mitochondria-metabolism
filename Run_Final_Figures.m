@@ -281,7 +281,7 @@ ym=bar(z,'grouped','FaceColor',"flat");
 for k = 1:size(ym,2)
     ym(k).CData = k;
 end
-colormap(bone); % colormap options: gray pink cool hot bone hsv copper parula
+colormap(bone); 
 
 set(gca,'xticklabel',name); 
 xlabel('ATP Hydrolysis Rate');ylabel({' PCr/ATP Ratio'; '(fraction of control)'});
