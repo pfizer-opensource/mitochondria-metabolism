@@ -68,6 +68,6 @@ Figures are saved in pdf format
 ---
 Lyndsey F. Meyer*, Neda Nourabadi, CJ Musante, Daniel A. Beard, Anna Sher
 
-*Correspodence to Lyndsey.Meyer@pfizer.com or Dabeard@med.umich.edu
+*Correspondence to Lyndsey.Meyer@pfizer.com or Dabeard@med.umich.edu
 
 ![alt text](https://github.com/openPfizer/DigitalHealthData/blob/master/img/osbypfizer.png)
