@@ -69,6 +69,8 @@ Figures are saved in pdf format
 Lyndsey F. Meyer*, Neda Nourabadi, CJ Musante, Daniel A. Beard, Anna Sher
 
 *Correspondence to Lyndsey.Meyer@pfizer.com or Dabeard@med.umich.edu
+
+##Latest Release
 [![DOI](https://zenodo.org/badge/558893205.svg)](https://zenodo.org/badge/latestdoi/558893205)
 
 
